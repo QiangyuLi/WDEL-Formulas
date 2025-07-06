@@ -40,3 +40,4 @@
 # debug information files
 *.dwo
 data/experimental_data.txt
+cpp/wdel_formula2_evaluation_results_cpp.txt
