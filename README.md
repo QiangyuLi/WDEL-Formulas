@@ -19,3 +19,7 @@ This repository contains MATLAB/Octave and C++ implementations of formulas for e
 
 This repository contains **original implementations** of formulas derived from a scientific publication. The formulas themselves are factual/mathematical and not copyrighted.  
 See `LICENSE` and `DISCLAIMER.md` for more details.
+
+## Additional References
+
+- Playán E., Salvador R., Faci J.M., Zapata N., Martínez-Cob A., Sánchez I. (2005). Day and night wind drift and evaporation losses in sprinkler solid-sets and moving laterals. *Agricultural Water Management*. DOI: https://doi.org/10.1016/j.agwat.2005.01.015

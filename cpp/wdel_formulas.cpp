@@ -1,4 +1,7 @@
 // Consolidated C++ implementations of WDEL equations E1 to E29
+// Based on Playán et al. (2005): Day and night wind drift and evaporation losses in sprinkler solid-sets and moving laterals.
+// DOI: https://doi.org/10.1016/j.agwat.2005.01.015
+
 #include <iostream>
 #include <cmath>
 
@@ -119,6 +122,45 @@ double wdel_E9(double U) {
 // Both irrigation systems, Night (Eq. E10)
 double wdel_E10(double RH) {
     return (10.3 - 8.97) * 1e-4 * RH * RH;
+}
+
+// Empirical formula: Trimmer (1987)
+double wdel_Trimmer1987(double Dn, double VPD, double P, double U) {
+    double term = 1.98 * std::pow(Dn, -0.72)
+        + 0.22 * std::pow(VPD, 0.63)
+        + 3.6e-4 * std::pow(P, 1.16)
+        + 0.4 * std::pow(U, 0.7);
+    return std::pow(term, 4.2);
+}
+
+// Empirical formula: Faci and Bercero (1991)
+double wdel_FaciBercero1991(double U) {
+    return 20.44 + 0.75 * U;
+}
+
+// Empirical formula: Montero (1999)
+double wdel_Montero1999(double VPD, double U) {
+    return 7.63 * std::pow(VPD, 0.5) + 1.62 * U;
+}
+
+// Empirical formula: Tarjuelo et al. (2000)
+double wdel_Tarjuelo2000(double P, double VPD, double U) {
+    return 0.007 * P + 7.38 * std::pow(VPD, 0.5) + 0.844 * U;
+}
+
+// Empirical formula: Faci et al. (2001)
+double wdel_Faci2001(double Dn, double U, double T) {
+    return -0.74 * Dn + 2.58 * U + 0.47 * T;
+}
+
+// Empirical formula: Dechmi et al. (2003)
+double wdel_Dechmi2003(double U) {
+    return 7.479 + 5.287 * U;
+}
+
+// Empirical formula: Playán et al. (2004)
+double wdel_Playan2004(double U) {
+    return 1.55 + 1.13 * U;
 }
 
 int main() {

@@ -144,3 +144,45 @@ end
 function loss = wdel_E10(RH)
     loss = (10.3 - 8.97) * 1e-4 * RH.^2;
 end
+
+% Empirical formula: Trimmer (1987)
+function loss = wdel_Trimmer1987(Dn, VPD, P, U)
+    term = 1.98 * Dn.^(-0.72) ...
+         + 0.22 * VPD.^0.63 ...
+         + 3.6e-4 * P.^1.16 ...
+         + 0.4 * U.^0.7;
+    loss = term.^4.2;
+end
+
+% Empirical formula: Faci and Bercero (1991)
+function loss = wdel_FaciBercero1991(U)
+    loss = 20.44 + 0.75 * U;
+end
+
+% Empirical formula: Montero (1999)
+function loss = wdel_Montero1999(VPD, U)
+    loss = 7.63 * VPD.^0.5 + 1.62 * U;
+end
+
+% Empirical formula: Tarjuelo et al. (2000)
+function loss = wdel_Tarjuelo2000(P, VPD, U)
+    loss = 0.007 * P + 7.38 * VPD.^0.5 + 0.844 * U;
+end
+
+% Empirical formula: Faci et al. (2001)
+function loss = wdel_Faci2001(Dn, U, T)
+    loss = -0.74 * Dn + 2.58 * U + 0.47 * T;
+end
+
+% Based on Playán et al. (2005): Day and night wind drift and evaporation losses in sprinkler solid-sets and moving laterals.
+% DOI: https://doi.org/10.1016/j.agwat.2005.01.015
+
+% Empirical formula: Dechmi et al. (2003)
+function loss = wdel_Dechmi2003(U)
+    loss = 7.479 + 5.287 * U;
+end
+
+% Empirical formula: Playán et al. (2004)
+function loss = wdel_Playan2004(U)
+    loss = 1.55 + 1.13 * U;
+end
